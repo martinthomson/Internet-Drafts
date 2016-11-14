@@ -273,9 +273,9 @@
       <t>A server receiving the Token Binding message verifies that the key parameters in the 
       message match the Token Binding parameters negotiated via 
       <xref target="I-D.ietf-tokbind-negotiation"/>, and then validates the signatures contained 
-      in the Token Binding message. If either of these checks fails, the server terminates the 
-      connection, otherwise the Token Binding is successfully established with the ID 
-      contained in the Token Binding message.</t>
+      in the Token Binding message. If either of these checks fails, the server rejects the
+      associated message.  For example, an HTTP request might be rejected with a 401 (Unauthorized)
+      status code.</t>
 
       <t>When a server supporting the Token Binding protocol receives a bound token, the server 
       compares the Token Binding ID in the security token with the Token Binding ID 
@@ -499,18 +499,17 @@
         the server MUST NOT initiate or allow TLS renegotiation, unless the Renegotiation 
         Indication <xref target="RFC5746" /> TLS extension has been negotiated.</t>
 
-        <t>The server MUST terminate the connection if the use of the Token Binding protocol was 
-        not negotiated, but the client sends the Token Binding message. If the Token Binding type 
+        <t>If the Token Binding type 
         is "provided_token_binding", the server MUST verify that the signature algorithm (including
         elliptic curve in the case of ECDSA) and key length in the Token Binding message match 
         those negotiated via <xref target="I-D.ietf-tokbind-negotiation"/>. In the case of a 
-        mismatch, the server MUST terminate the connection. Token Bindings of type 
-        "referred_token_binding" may use different key parameters than those negotiated with this 
+        mismatch, the server MUST reject the message. Token Bindings of type 
+        "referred_token_binding" MAY use different key parameters than those negotiated with this 
         client.</t>
         
         <t>If the Token Binding message does not contain at least one TokenBinding structure, 
         or if a signature contained in any TokenBinding structure is invalid, the server MUST 
-        terminate the connection. </t>
+        reject the message. </t>
         
         <t>Servers MUST ignore any unknown extensions. Initially, no extension types are defined 
         (see <xref target="IANA-TBExts"/> "<xref target="IANA-TBExts" format="title"/>").</t>
