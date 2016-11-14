@@ -438,13 +438,10 @@
         </t>
 
         <t>The EKM is obtained using the Keying Material Exporters for TLS defined in 
-        <xref target="RFC5705" />, by supplying the following input values:
-          <list style="symbols">
-            <t>Label: The ASCII string "EXPORTER-Token-Binding" with no terminating NUL.</t>
-            <t>Context value: NULL (no application context supplied).</t>
-            <t>Length: 32 bytes.</t>
-          </list>
-        </t>
+        <xref target="RFC5705" />, by supplying a label of the ASCII string "EXPORTER-Token-Binding"
+        with no terminating NUL, no context value, and - for the signature schemes defined in this
+        document - an output length of 32 bytes.  Other signature schemes MAY specify that a longer
+        exporter output is needed.  The length of the exporter output MUST be at least 32 bytes.</t>
       </section>
 
       <section title="TokenBinding.extensions">
