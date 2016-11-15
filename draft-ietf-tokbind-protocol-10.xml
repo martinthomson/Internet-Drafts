@@ -274,7 +274,7 @@
       message match the Token Binding parameters negotiated via 
       <xref target="I-D.ietf-tokbind-negotiation"/>, and then validates the signatures contained 
       in the Token Binding message. If either of these checks fails, the server rejects the
-      associated message.  For example, an HTTP request might be rejected with a 401 (Unauthorized)
+      associated message.  For example, an HTTP request might be rejected with a 400 (Bad Request)
       status code.</t>
 
       <t>When a server supporting the Token Binding protocol receives a bound token, the server 
