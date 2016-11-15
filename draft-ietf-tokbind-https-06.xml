@@ -330,6 +330,11 @@
       The Token Binding ID established by this TokenBinding
       is called a <spanx style="emph">Provided Token Binding
       ID</spanx>.</t>
+	    
+      <t>A TokenBindingMessage is validated as described in
+      <xref target="I-D.ietf-tokbind-protocol"/>.  A request that contains
+      an invalid token MUST be rejected with an HTTP 400 (Bad Request)
+      status code.</t>
       
       <t>The TokenBindingMessage MAY also contain one TokenBinding structure
       with TokenBindingType of referred_token_binding, as specified in
